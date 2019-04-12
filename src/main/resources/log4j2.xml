@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="sdp_log" monitorInterval="0" strict="false">
+	<properties>
+		<property name="patternLayout">%d{MM-dd HH:mm:ss:SSS} %-1p{length=1} %c{36}(%L) - %m%n%throwable{full}</property>
+		<property name="debugFileName">logs/debug.log</property>
+		<property name="internalErrorFileName">logs/error.log</property>
+		<property name="externalErrorFileName">logs/error_ext.log</property>
+		<property name="debugFilenamePattern">logs/$${date:yyyy-MM}/debug-%d{yyyy-MM-dd}-%i.log.gz</property>
+		<property name="internalErrorFilenamePattern">logs/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log.gz</property>
+		<property name="externalErrorFilenamePattern">logs/$${date:yyyy-MM}/error-ext-%d{yyyy-MM-dd}-%i.log.gz</property>
+		
+	</properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${patternLayout}" />
+		</Console>
+		<RollingRandomAccessFile name="debugRollingRandomAccessFile" fileName="${debugFileName}" filePattern="${debugFilenamePattern}">
+			<PatternLayout>
+				<Pattern>${patternLayout}</Pattern>
+			</PatternLayout>
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="50MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="100" fileIndex="max" min="1" compressionLevel="0" />
+		</RollingRandomAccessFile>
+		<RollingRandomAccessFile name="internalErrorRollingRandomAccessFile" fileName="${internalErrorFileName}" filePattern="${internalErrorFilenamePattern}">
+			<PatternLayout>
+				<Pattern>${patternLayout}</Pattern>
+			</PatternLayout>
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="50MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="1000" fileIndex="max" min="1" compressionLevel="0" />
+		    <RegexFilter regex="ext.*" onMatch="DENY" onMismatch="ACCEPT"/>
+		</RollingRandomAccessFile>
+		
+		<RollingRandomAccessFile name="externalErrorRollingRandomAccessFile" fileName="${externalErrorFileName}" filePattern="${externalErrorFilenamePattern}">
+			<PatternLayout>
+				<Pattern>${patternLayout}</Pattern>
+			</PatternLayout>
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="50MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="1000" fileIndex="max" min="1" compressionLevel="0" />
+		   <RegexFilter regex="ext.*" onMatch="ACCEPT" onMismatch="DENY"/>
+		</RollingRandomAccessFile>
+	</Appenders>
+	<Loggers>
+		<asyncRoot level="error" includeLocation="true">
+			<AppenderRef ref="Console"/>
+			<AppenderRef ref="debugRollingRandomAccessFile"/>
+			<AppenderRef ref="internalErrorRollingRandomAccessFile" level="ERROR"/>
+			<AppenderRef ref="externalErrorRollingRandomAccessFile" level="ERROR"/>
+		</asyncRoot>
+	</Loggers>
+</Configuration>
