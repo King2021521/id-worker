@@ -1,6 +1,6 @@
-package com.zxm.core;
+package com.zxm.idworker.core;
 
-import com.zxm.registry.Registry;
+import com.zxm.idworker.registry.Registry;
 import lombok.extern.slf4j.Slf4j;
 
 /**

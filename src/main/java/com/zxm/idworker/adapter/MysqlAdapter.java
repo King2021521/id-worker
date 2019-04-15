@@ -1,4 +1,4 @@
-package com.zxm.adapter;
+package com.zxm.idworker.adapter;
 
 /**
  * @Author zxm

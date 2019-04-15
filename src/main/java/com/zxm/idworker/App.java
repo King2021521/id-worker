@@ -1,8 +1,8 @@
-package com.zxm;
+package com.zxm.idworker;
 
-import com.zxm.registry.Registry;
-import com.zxm.registry.ZookeeperRegistry;
-import com.zxm.core.IdWorker;
+import com.zxm.idworker.registry.Registry;
+import com.zxm.idworker.registry.ZookeeperRegistry;
+import com.zxm.idworker.core.IdWorker;
 
 /**
  * Hello world!

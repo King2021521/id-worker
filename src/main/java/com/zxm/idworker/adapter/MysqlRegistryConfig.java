@@ -1,4 +1,4 @@
-package com.zxm.adapter;
+package com.zxm.idworker.adapter;
 
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;

@@ -1,4 +1,4 @@
-package com.zxm.registry;
+package com.zxm.idworker.registry;
 
 /**
  * @Author zxm

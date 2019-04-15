@@ -1,7 +1,7 @@
-package com.zxm.registry;
+package com.zxm.idworker.registry;
 
-import com.zxm.adapter.MysqlAdapter;
-import com.zxm.adapter.MysqlRegistryConfig;
+import com.zxm.idworker.adapter.MysqlAdapter;
+import com.zxm.idworker.adapter.MysqlRegistryConfig;
 import lombok.extern.slf4j.Slf4j;
 
 /**
