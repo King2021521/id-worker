@@ -24,7 +24,7 @@ public class MysqlRegistry implements Registry {
         MysqlRegistryConfig config = new MysqlRegistryConfig(dataField);
         int result = mysqlAdapter.registry(config);
         if (result == 1) {
-            log.info("节点注册成功，sequenceId:{}", config.getId());
+            log.debug("节点注册成功，sequenceId:{}", config.getId());
         }
         Long sequenceId = config.getId();
         if (sequenceId != null) {

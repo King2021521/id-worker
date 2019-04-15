@@ -36,7 +36,7 @@ public class ZookeeperRegistry implements Registry {
         if (zkClient.exists(ROOT_NODE, false) == null) {
             String path = zkClient.create(ROOT_NODE, "idWorker".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
             if (StringUtils.isNotBlank(path)) {
-                log.info("root node init success,path:{}", path);
+                log.debug("root node init success,path:{}", path);
             }
         }
     }
@@ -45,7 +45,7 @@ public class ZookeeperRegistry implements Registry {
     public long getWorkerId() throws KeeperException, InterruptedException {
         String path = zkClient.create(ROOT_NODE + "/_", "idWorker".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
         if (StringUtils.isNotBlank(path)) {
-            log.info("node create success,path:{}", path);
+            log.debug("node create success,path:{}", path);
             return Long.valueOf(path.substring(ROOT_NODE.length() + 2, path.length())) % DEFAULT_MOD_VALUE;
         }
         return -1;

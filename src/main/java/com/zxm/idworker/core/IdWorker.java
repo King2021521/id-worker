@@ -66,7 +66,7 @@ public class IdWorker {
             throw new Exception("registryAdapter init fail");
         }
         workerId = registry.getWorkerId();
-        log.info("GLOBAL_WORkER_ID INIT:" + workerId);
+        log.debug("GLOBAL_WORkER_ID INIT:" + workerId);
     }
 
     /**

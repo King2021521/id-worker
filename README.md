@@ -12,18 +12,18 @@
   
 #### 配置方式：
 ```
- @Configuration  
- public class IdWorkerConfig {  
+ @Configuration
+ public class IdConfig {
      @Bean
-     public RegistryAdapter registryAdapter() throws Exception{
-         return new ZkRegistryAdapter("10.10.4.17:2181", 3000);
+     public Registry registryAdapter() throws Exception{
+         return new ZookeeperRegistry("10.10.4.17:2181", 3000);
      }
  
      @Bean
      public IdWorker idWorker() throws Exception{
          return new IdWorker(registryAdapter());
      }
- }  
+ }
 ``` 
 #### 使用举例：
 ```
