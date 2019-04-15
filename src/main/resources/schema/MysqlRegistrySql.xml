@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <mapper namespace="*">
-    <insert id="insert" parameterType="com.zxm.adapter.MysqlRegistryConfig">
+    <insert id="insert" parameterType="com.zxm.idworker.adapter.MysqlRegistryConfig">
         <selectKey keyProperty="id" resultType="java.lang.Long" order="AFTER">
             SELECT LAST_INSERT_ID()
         </selectKey>
