@@ -1,6 +1,6 @@
 package com.zxm.core;
 
-import com.zxm.adapter.RegistryAdapter;
+import com.zxm.registry.Registry;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -61,11 +61,11 @@ public class IdWorker {
      */
     private static long lastTimestamp = -1L;
 
-    public IdWorker(RegistryAdapter registryAdapter) throws Exception {
-        if (null == registryAdapter) {
+    public IdWorker(Registry registry) throws Exception {
+        if (null == registry) {
             throw new Exception("registryAdapter init fail");
         }
-        workerId = registryAdapter.getWorkerId();
+        workerId = registry.getWorkerId();
         log.info("GLOBAL_WORkER_ID INIT:" + workerId);
     }
 

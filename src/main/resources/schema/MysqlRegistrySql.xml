@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="*">
+    <insert id="insert" parameterType="com.zxm.adapter.MysqlRegistryConfig">
+        <selectKey keyProperty="id" resultType="java.lang.Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO mysql_registry_config (
+        id,
+        data)
+        VALUES (
+        #{id,jdbcType=BIGINT},
+        #{data,jdbcType=VARCHAR})
+    </insert>
+</mapper>

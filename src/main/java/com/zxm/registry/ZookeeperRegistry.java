@@ -1,4 +1,4 @@
-package com.zxm.adapter;
+package com.zxm.registry;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -8,22 +8,21 @@ import java.io.IOException;
 
 /**
  * @Author zxm
- * @Description 基于zk的注册适配器
+ * @Description 基于zk的注册中心
  * @Date Create in 上午 9:44 2019/4/12 0012
  */
 @Slf4j
-public class ZkRegistryAdapter implements RegistryAdapter {
+public class ZookeeperRegistry implements Registry {
     private static final int DEFAULT_SESSION_TIMEOUT = 3000;
     private static final String ROOT_NODE = "/idWorker";
 
-    private static final int DEFAULT_MOD_VALUE = 1024;
     private ZooKeeper zkClient;
 
-    public ZkRegistryAdapter(String connectString) throws Exception {
+    public ZookeeperRegistry(String connectString) throws Exception {
         this(connectString, DEFAULT_SESSION_TIMEOUT);
     }
 
-    public ZkRegistryAdapter(String connectString, int sessionTimeOut) throws Exception {
+    public ZookeeperRegistry(String connectString, int sessionTimeOut) throws Exception {
         try {
             zkClient = new ZooKeeper(connectString, sessionTimeOut, watchedEvent -> log.info("path:{}, state:{}", watchedEvent.getPath(), watchedEvent.getState()));
             initRootNode(zkClient);

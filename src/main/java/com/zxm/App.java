@@ -1,7 +1,7 @@
 package com.zxm;
 
-import com.zxm.adapter.RegistryAdapter;
-import com.zxm.adapter.ZkRegistryAdapter;
+import com.zxm.registry.Registry;
+import com.zxm.registry.ZookeeperRegistry;
 import com.zxm.core.IdWorker;
 
 /**
@@ -9,7 +9,7 @@ import com.zxm.core.IdWorker;
  */
 public class App {
     public static void main(String[] args) throws Exception {
-        RegistryAdapter registryAdapter = new ZkRegistryAdapter("10.10.4.17:2181", 3000);
+        Registry registryAdapter = new ZookeeperRegistry("10.10.4.17:2181", 3000);
         Thread.sleep(10 * 1000);
         IdWorker idWorker = new IdWorker(registryAdapter);
 
