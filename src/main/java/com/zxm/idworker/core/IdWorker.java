@@ -102,7 +102,7 @@ public class IdWorker {
         //移位并通过或运算拼到一起组成64位的ID
         return ((timestamp - twepoch) << timestampLeftShift) //
                 | (workerId << workerIdShift)
-                | exchangeSequence(sequence);
+                | sequence;
     }
 
     /**
