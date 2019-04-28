@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 public class IdWorker {
 
     /**
-     * 开始时间截 (2018-01-01 00:00:00)
+     * 开始时间戳 (2018-01-01 00:00:00)
      */
     private static final long twepoch = 1514736000000L;
 
