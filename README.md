@@ -10,7 +10,7 @@
 #### 注意事项
 * 注册中心的高可用由业务自己保证
   
-#### 配置方式：
+#### 配置方式（基于zk客户端）：
 ```
  @Configuration
  public class IdConfig {
@@ -24,7 +24,23 @@
          return new IdWorker(registryAdapter());
      }
  }
-``` 
+```   
+#### 基于curator客户端配置：  
+```
+ @Configuration
+ public class IdConfig {
+     @Bean
+     public Registry registryAdapter() throws Exception{
+         //支持自定义命名空间，用于业务隔离
+         return new ZookeeperCuratorRegistry("10.10.4.17:2181", "sequence");
+     }
+ 
+     @Bean
+     public IdWorker idWorker() throws Exception{
+         return new IdWorker(registryAdapter());
+     }
+ }
+```   
 #### 使用举例：
 ```
 public class IdWorkerTest{
