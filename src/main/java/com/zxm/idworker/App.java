@@ -9,8 +9,7 @@ import com.zxm.idworker.core.IdWorker;
  */
 public class App {
     public static void main(String[] args) throws Exception {
-        Registry registryAdapter = new ZookeeperRegistry("10.10.4.17:2181", 3000);
-        Thread.sleep(10 * 1000);
+        Registry registryAdapter = new ZookeeperRegistry("10.10.5.238:2181", 3000);
         IdWorker idWorker = new IdWorker(registryAdapter);
 
         for (int i = 0; i < 10; i++) {
