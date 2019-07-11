@@ -16,7 +16,7 @@
  public class IdConfig {
      @Bean
      public Registry registryAdapter() throws Exception{
-         return new ZookeeperRegistry("10.10.4.17:2181", 3000);
+         return new ZookeeperRegistry("10.10.10.1:2181,10.10.10.2:2181,10.10.10.3:2181", 3000);
      }
  
      @Bean
@@ -32,7 +32,7 @@
      @Bean
      public Registry registryAdapter() throws Exception{
          //支持自定义命名空间，用于业务隔离
-         return new ZookeeperCuratorRegistry("10.10.4.17:2181", "sequence");
+         return new ZookeeperCuratorRegistry("10.10.10.1:2181,10.10.10.2:2181,10.10.10.3:2181", "sequence");
      }
  
      @Bean
